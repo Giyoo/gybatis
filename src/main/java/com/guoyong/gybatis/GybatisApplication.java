@@ -1,4 +1,4 @@
-package com.guoyong.mybatis.gybatis;
+package com.guoyong.gybatis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
