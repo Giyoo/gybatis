@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName:SqlsessionFactoryController
@@ -22,14 +24,21 @@ public class SqlsessionFactoryController {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        try (SqlSession session = sqlSessionFactory.openSession()) {
-            Blog blog = session.selectOne("com.guoyong.gybatis.Mapper.BlogMapper.selectBlog", 1);
-            System.out.println(JSON.toJSON(blog));
-        }
+//        try (SqlSession session = sqlSessionFactory.openSession()) {
+//            Blog blog = session.selectOne("com.guoyong.gybatis.Mapper.BlogMapper.selectBlog", 1);
+//            System.out.println(JSON.toJSON(blog));
+//        }
+//
+//        try (SqlSession session = sqlSessionFactory.openSession()) {
+//            BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+//            Blog blog = blogMapper.selectBlog(1);
+//            System.out.println(JSON.toJSON(blog));
+//        }
 
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            BlogMapper blogMapper = session.getMapper(BlogMapper.class);
-            Blog blog = blogMapper.selectBlog(1);
+            Map<String,String> map = new HashMap<>();
+            map.put("name","测试1");
+            Blog blog = session.selectOne("com.guoyong.gybatis.Mapper.BlogMapper.selectBlogByMap", map);
             System.out.println(JSON.toJSON(blog));
         }
 

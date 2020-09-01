@@ -2,6 +2,8 @@ package com.guoyong.gybatis.Mapper;
 
 import com.guoyong.gybatis.Domain.Blog;
 
+import java.util.Map;
+
 /**
  * @ClassName:BlobMapper
  * @Description:TODO
@@ -10,4 +12,5 @@ import com.guoyong.gybatis.Domain.Blog;
  **/
 public interface BlogMapper {
     Blog selectBlog(int id);
+    Blog selectBlogByMap(Map<String,String> map);
 }

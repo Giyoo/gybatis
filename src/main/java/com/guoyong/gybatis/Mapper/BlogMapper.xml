@@ -6,4 +6,7 @@
     <select id="selectBlog" resultType="com.guoyong.gybatis.Domain.Blog">
     select * from Blog where id = #{id}
   </select>
+    <select id="selectBlogByMap" resultType="com.guoyong.gybatis.Domain.Blog">
+    select * from Blog where name = #{name}
+  </select>
 </mapper>
